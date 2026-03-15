@@ -48,7 +48,7 @@ const Signup = () => {
     return (
         <div>
             <h2>SignUp</h2>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} className='card'>
                 <input type="text" placeholder='Enter Name' name='name' value={inputData.name} onChange={handleChange} required/>
                 <input type="email" placeholder='Enter Email' name='email' value={inputData.email} onChange={handleChange} required />
                 <input type="password" placeholder='Enter Password' name='password' value={inputData.password} onChange={handleChange} required />
