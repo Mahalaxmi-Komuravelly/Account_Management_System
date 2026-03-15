@@ -1,4 +1,4 @@
-import supabase from "../config/supabaseClient";
+import supabase from "../config/supabaseClient.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
@@ -49,7 +49,10 @@ export const login = async (req,res) => {
         {expiresIn:"2h"}
     )
     res.status(200).json({message:"User Login successfully",data:{
+        id:existing.id,
+        name:existing.name,
         email:existing.email,
+        balance:existing.balance,
         token
     }})
 }
