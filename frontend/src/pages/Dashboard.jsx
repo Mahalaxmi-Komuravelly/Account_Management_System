@@ -1,10 +1,33 @@
 import React from 'react'
 import { useAuth } from '../context/AuthContext'
 import { useNavigate } from 'react-router-dom';
+import { useState,useEffect } from 'react';
 const Dashboard = () => {
     const { user, logout } = useAuth();
     const navigate = useNavigate();
-    if (!user) return <p>Loading user...</p>
+    const [balance, setBalance] = useState(null)
+    const [loading, setLoading] = useState(true)
+
+    useEffect(() => {
+        const fetchBalance = async () => {
+            if (!user) return
+
+            try {
+                const token = localStorage.getItem('token')
+                const response = await api.get('/api/account/balance', {
+                    headers: { Authorization: `Bearer ${token}` }
+                })
+                setBalance(response.data.balance)
+            } catch (error) {
+                console.error('Error fetching balance', error)
+            } finally {
+                setLoading(false)
+            }
+        }
+        fetchBalance()
+    }, [user])
+
+
     return (
         <div>
             <h2>Welcome {user.name}</h2>
