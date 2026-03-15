@@ -33,9 +33,9 @@ export const AuthProvider = ({ children }) => {
       password
     });
 
-    const { id, email: userEmail, token } = response.data.data;
+    const { id, name, email: userEmail, balance, token } = response.data.data;
 
-    const userData = { id, email: userEmail };
+    const userData = { id, name, email: userEmail, balance };
 
     localStorage.setItem("token", token);
     localStorage.setItem("user", JSON.stringify(userData));
