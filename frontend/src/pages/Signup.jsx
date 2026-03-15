@@ -47,10 +47,11 @@ const Signup = () => {
 
     return (
         <div>
+            <h2>SignUp</h2>
             <form onSubmit={handleSubmit}>
-                <input type="text" placeholder='Enter Name' name='name' value={inputData.name} onChange={handleChange} />
-                <input type="email" placeholder='Enter Email' name='email' value={inputData.email} onChange={handleChange} />
-                <input type="password" placeholder='Enter Password' name='password' value={inputData.password} onChange={handleChange} />
+                <input type="text" placeholder='Enter Name' name='name' value={inputData.name} onChange={handleChange} required/>
+                <input type="email" placeholder='Enter Email' name='email' value={inputData.email} onChange={handleChange} required />
+                <input type="password" placeholder='Enter Password' name='password' value={inputData.password} onChange={handleChange} required />
                 <button type='submit' disabled={loading}>
                     {loading ? "Creating Account..." : "SignUp"}
                 </button>
